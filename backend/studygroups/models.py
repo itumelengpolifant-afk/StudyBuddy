@@ -44,7 +44,8 @@ class StudyGroup(models.Model):
 class GroupMember(models.Model):
     class Role(models.TextChoices):
         OWNER = 'owner', 'Owner'
-        MEMBER = 'member', 'Member'
+        MEMBER = 'member', 'Student'
+        TUTOR = 'tutor', 'Tutor'
 
     group = models.ForeignKey(
         StudyGroup, on_delete=models.CASCADE, related_name='memberships'
@@ -72,6 +73,7 @@ class GroupMember(models.Model):
 class StudySession(models.Model):
     class Status(models.TextChoices):
         PROPOSED = 'proposed', 'Proposed'
+        VOTING = 'voting', 'Voting'
         CONFIRMED = 'confirmed', 'Confirmed'
         COMPLETED = 'completed', 'Completed'
         CANCELLED = 'cancelled', 'Cancelled'
